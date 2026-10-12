@@ -545,7 +545,7 @@ async def fast_loop():
                         )
                 elif channel:
                     for a in alerts:
-                        await channel.send(f"@everyone\n{a}")
+                        await channel.send(a)
                         await asyncio.sleep(1)
         except Exception as e:
             print(f"[FAST] error: {e}")
@@ -590,7 +590,7 @@ async def slow_loop():
                     for fixture, xg in enriched:
                         msg = detect_momentum(fixture, xg, is_startup=False)
                         if msg:
-                            await channel_xg.send(f"@everyone\n{msg}")
+                            await channel_xg.send(msg)
                             await asyncio.sleep(0.5)
                         for a in await detect_tormenta_perfecta(fixture, xg):
                             await channel_xg.send(a)
