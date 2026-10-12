@@ -590,7 +590,7 @@ async def slow_loop():
                     for fixture, xg in enriched:
                         msg = detect_momentum(fixture, xg, is_startup=False)
                         if msg:
-                            await channel_xg.send(msg)
+                            await channel_xg.send(f"@everyone\n{msg}")
                             await asyncio.sleep(0.5)
                         for a in await detect_tormenta_perfecta(fixture, xg):
                             await channel_xg.send(a)
@@ -603,7 +603,7 @@ async def slow_loop():
                     for fixture, _xg in enriched:
                         msg = await detect_mismatch(fixture)
                         if msg:
-                            await channel_mm.send(f"@everyone\n{msg}")
+                            await channel_mm.send(msg)
                             await asyncio.sleep(0.5)
 
             collect_garbage(fixtures)
